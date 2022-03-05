@@ -10,9 +10,11 @@ import XCTest
 
 class DestinationListTests: XCTestCase {
     var data: Data?
+    var vm: DestinationViewModel!
     
     override func setUpWithError() throws {
         data = FileLoader.loadData()
+        vm = DestinationViewModel()
     }
 
     override func tearDownWithError() throws {
@@ -21,6 +23,11 @@ class DestinationListTests: XCTestCase {
 
     func testLoadMockData() throws {
         XCTAssertNotNil(data)
+    }
+    
+    func testFetcherData() throws {
+        vm.fetchData()
+        XCTAssertNotNil(vm.destinations)
     }
 
     func testPerformanceExample() throws {
