@@ -12,9 +12,11 @@ class ViewController: UIViewController {
     private lazy var tableview: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
+        table.register(PlaceTableViewCell.self, forCellReuseIdentifier: "Cell")
         table.delegate = self
-        table.dataSource = self
+        table.dataSource = viewModel.datasource
         table.separatorStyle = .none
+        table.rowHeight = 250
         return table
     }()
     
@@ -30,8 +32,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        configure()
         viewModel.fetchData()
+        configure()
     }
 
 }
@@ -57,12 +59,6 @@ private extension ViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.destinations?.count ?? 0
-    }
+extension ViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
 }

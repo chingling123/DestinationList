@@ -11,10 +11,14 @@ import XCTest
 class DestinationListTests: XCTestCase {
     var data: Data?
     var vm: DestinationViewModel!
+    var dataSource: DestinationDataSource!
+    let tableView = UITableView()
     
     override func setUpWithError() throws {
         data = FileLoader.loadData()
         vm = DestinationViewModel()
+        vm.fetchData()
+        dataSource = vm.datasource
     }
 
     override func tearDownWithError() throws {
@@ -26,15 +30,21 @@ class DestinationListTests: XCTestCase {
     }
     
     func testFetcherData() throws {
-        vm.fetchData()
-        XCTAssertNotNil(vm.destinations)
+        XCTAssertNotNil(dataSource.destinations)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testTableViewDataSourceIsKittenDataSource() {
+        XCTAssertEqual(dataSource.destinations?.count, 14)
     }
-
+    
+    func testNumberOfRows() {
+        let numberOfRows = dataSource.tableView(tableView, numberOfRowsInSection: 0)
+        XCTAssertEqual(numberOfRows, 14)
+    }
+    
+    func testCellForRow() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        let cell = dataSource.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+        XCTAssertEqual(cell.textLabel?.text, "China")
+    }
 }

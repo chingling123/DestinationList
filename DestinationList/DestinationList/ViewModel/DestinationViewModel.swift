@@ -8,20 +8,20 @@
 import Foundation
 
 class DestinationViewModel {
-    private var data: [PlaceModel]?
-
+    private var dataSource: DestinationDataSource?
+    
     private func fetch() {
         DataFetcher.fetch { [weak self] resultData in
-            self?.data = resultData
+            self?.dataSource = DestinationDataSource(data: resultData)
         }
     }
 }
 
 extension DestinationViewModel: DestinationViewModelProtocol {
-    var destinations: [PlaceModel]? {
-        return self.data
+    var datasource: DestinationDataSource? {
+        return dataSource
     }
-    
+
     func fetchData() {
         self.fetch()
     }
