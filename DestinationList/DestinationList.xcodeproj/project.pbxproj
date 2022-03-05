@@ -14,6 +14,8 @@
 		755F01AC27D3FAAA00471966 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 755F01AB27D3FAAA00471966 /* Assets.xcassets */; };
 		755F01AF27D3FAAA00471966 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755F01AD27D3FAAA00471966 /* LaunchScreen.storyboard */; };
 		755F01BA27D3FAAA00471966 /* DestinationListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F01B927D3FAAA00471966 /* DestinationListTests.swift */; };
+		755F01D427D401CC00471966 /* MOCK_DATA.json in Resources */ = {isa = PBXBuildFile; fileRef = 755F01D327D401CC00471966 /* MOCK_DATA.json */; };
+		755F01D627D4022B00471966 /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F01D527D4022B00471966 /* FileLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,8 @@
 		755F01B027D3FAAA00471966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		755F01B527D3FAAA00471966 /* DestinationListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DestinationListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		755F01B927D3FAAA00471966 /* DestinationListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationListTests.swift; sourceTree = "<group>"; };
+		755F01D327D401CC00471966 /* MOCK_DATA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MOCK_DATA.json; sourceTree = "<group>"; };
+		755F01D527D4022B00471966 /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 		755F01A127D3FAA900471966 /* DestinationList */ = {
 			isa = PBXGroup;
 			children = (
+				755F01D227D401C200471966 /* Resource */,
 				755F01A227D3FAA900471966 /* AppDelegate.swift */,
 				755F01A427D3FAA900471966 /* SceneDelegate.swift */,
 				755F01A627D3FAA900471966 /* ViewController.swift */,
@@ -95,6 +100,15 @@
 				755F01B927D3FAAA00471966 /* DestinationListTests.swift */,
 			);
 			path = DestinationListTests;
+			sourceTree = "<group>";
+		};
+		755F01D227D401C200471966 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				755F01D327D401CC00471966 /* MOCK_DATA.json */,
+				755F01D527D4022B00471966 /* FileLoader.swift */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				755F01AF27D3FAAA00471966 /* LaunchScreen.storyboard in Resources */,
+				755F01D427D401CC00471966 /* MOCK_DATA.json in Resources */,
 				755F01AC27D3FAAA00471966 /* Assets.xcassets in Resources */,
 				755F01AA27D3FAA900471966 /* Main.storyboard in Resources */,
 			);
@@ -200,6 +215,7 @@
 			files = (
 				755F01A727D3FAA900471966 /* ViewController.swift in Sources */,
 				755F01A327D3FAA900471966 /* AppDelegate.swift in Sources */,
+				755F01D627D4022B00471966 /* FileLoader.swift in Sources */,
 				755F01A527D3FAA900471966 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
