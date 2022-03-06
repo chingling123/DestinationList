@@ -87,6 +87,19 @@ extension ViewController: UITableViewDelegate {
                        completion: nil)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        UIView.animate(withDuration: 0.4,
+                            delay: 0,
+                            usingSpringWithDamping: 0.8,
+                            initialSpringVelocity: 1,
+                            options: [.curveEaseInOut],
+                            animations: { cell?.transform = CGAffineTransform.identity.scaledBy(x: 0.90, y: 0.90) },
+                            completion: {_ in
+                                        cell?.transform = CGAffineTransform.identity.scaledBy(x: 1.0, y: 1.0)
+                            })
+    }
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         currentOffset = scrollView.contentOffset.y
     }
