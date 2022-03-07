@@ -12,12 +12,12 @@ class ViewController: UIViewController {
     private var toTop: Bool = false
     private var currentOffset: CGFloat = 0.0
     private var viewModel: DestinationViewModelProtocol
-    private lazy var tableview: UITableView = {
+    lazy var tableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(PlaceTableViewCell.self, forCellReuseIdentifier: "Cell")
         table.delegate = self
-        table.dataSource = viewModel.datasource
+        table.dataSource = viewModel.dataSource
         table.separatorStyle = .none
         table.rowHeight = 250
         return table
@@ -43,21 +43,21 @@ class ViewController: UIViewController {
 private extension ViewController {
     func configure() {
         view.backgroundColor = .white
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.delegate = self
         title = "My Trips"
         addViews()
     }
     
     func addViews() {
-        view.addSubview(tableview)
+        view.addSubview(tableView)
         makeConstraints()
     }
     
     func makeConstraints() {
-        tableview.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tableview.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableview.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 }
 
@@ -88,16 +88,11 @@ extension ViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.4,
-                            delay: 0,
-                            usingSpringWithDamping: 0.8,
-                            initialSpringVelocity: 1,
-                            options: [.curveEaseInOut],
-                            animations: { cell?.transform = CGAffineTransform.identity.scaledBy(x: 0.90, y: 0.90) },
-                            completion: {_ in
-                                        cell?.transform = CGAffineTransform.identity.scaledBy(x: 1.0, y: 1.0)
-                            })
+        guard let hasPlace = viewModel.dataSource?.destinations?[indexPath.row] else { return }
+        viewModel.indexPath = indexPath
+        let vc = DetailViewController(viewModel: hasPlace)
+        navigationController?.modalPresentationStyle = .custom
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -108,5 +103,25 @@ extension ViewController: UITableViewDelegate {
         let newOffset = scrollView.contentOffset.y
         toTop = newOffset > currentOffset
         currentOffset = newOffset
+    }
+}
+
+extension ViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        switch operation {
+        case .push:
+            return Animation(duration: 0.8, type: .present)
+        case .pop:
+            return Animation(duration: 0.8, type: .dismiss)
+        default:
+            return nil
+        }
+    }
+}
+
+extension ViewController: PlaceTransitionProtocol {
+    var backgroundView: UIImageView {
+        guard let indexPath = viewModel.indexPath, let cell = tableView.cellForRow(at: indexPath) as? PlaceTableViewCell else { return UIImageView() }
+        return cell.bkgImage
     }
 }

@@ -8,18 +8,27 @@
 import Foundation
 
 class DestinationViewModel {
-    private var dataSource: DestinationDataSource?
+    private var ds: DestinationDataSource?
+    private var selectedIndexPath: IndexPath?
     
     private func fetch() {
         DataFetcher.fetch { [weak self] resultData in
-            self?.dataSource = DestinationDataSource(data: resultData)
+            self?.ds = DestinationDataSource(data: resultData)
         }
     }
 }
 
 extension DestinationViewModel: DestinationViewModelProtocol {
-    var datasource: DestinationDataSource? {
-        return dataSource
+    var indexPath: IndexPath? {
+        get {
+            return selectedIndexPath
+        }
+        set {
+            selectedIndexPath = newValue
+        }
+    }
+    var dataSource: DestinationDataSource? {
+        return ds
     }
 
     func fetchData() {

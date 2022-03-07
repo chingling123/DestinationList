@@ -23,7 +23,7 @@ class PlaceTableViewCell: UITableViewCell {
         label.textColor = .white
         return label
     }()
-    private lazy var bkgImage: UIImageView = {
+    lazy var bkgImage: UIImageView = {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false
         return img

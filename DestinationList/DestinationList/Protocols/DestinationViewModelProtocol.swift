@@ -8,6 +8,7 @@
 import Foundation
 
 protocol DestinationViewModelProtocol: AnyObject {
-    var datasource: DestinationDataSource? { get }
+    var dataSource: DestinationDataSource? { get }
+    var indexPath: IndexPath? { get set }
     func fetchData()
 }
