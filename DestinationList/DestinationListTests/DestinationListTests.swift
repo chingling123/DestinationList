@@ -18,7 +18,7 @@ class DestinationListTests: XCTestCase {
         data = FileLoader.loadData()
         vm = DestinationViewModel()
         vm.fetchData()
-        dataSource = vm.datasource
+        dataSource = vm.dataSource
     }
 
     override func tearDownWithError() throws {
@@ -40,11 +40,5 @@ class DestinationListTests: XCTestCase {
     func testNumberOfRows() {
         let numberOfRows = dataSource.tableView(tableView, numberOfRowsInSection: 0)
         XCTAssertEqual(numberOfRows, 14)
-    }
-    
-    func testCellForRow() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        let cell = dataSource.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0))
-        XCTAssertEqual(cell.textLabel?.text, "China")
     }
 }
