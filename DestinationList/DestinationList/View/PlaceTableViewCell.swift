@@ -39,10 +39,10 @@ class PlaceTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func configure(data: PlaceModel) {
-        titleLabel.text = data.place
-        dateLabel.text = data.date.formatted()
-        bkgImage.image = UIImage(named: data.image)
+    func configure(item: PlaceModel) {
+        titleLabel.text = item.place
+        dateLabel.text = item.date.formatted()
+        bkgImage.image = UIImage(named: item.image)
         bkgImage.layer.cornerRadius = 10
         bkgImage.layer.masksToBounds = true
         bkgImage.contentMode = .scaleAspectFill

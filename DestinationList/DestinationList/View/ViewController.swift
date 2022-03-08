@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    private let coordinator: DestinationsCoordinator?
     private var lastShowCell: Bool = false
     private var toTop: Bool = false
     private var currentOffset: CGFloat = 0.0
@@ -23,8 +24,9 @@ class ViewController: UIViewController {
         return table
     }()
     
-    init(viewModel: DestinationViewModelProtocol) {
+    init(viewModel: DestinationViewModelProtocol, coordinator: DestinationsCoordinator) {
         self.viewModel = viewModel
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -90,9 +92,7 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let hasPlace = viewModel.dataSource?.destinations?[indexPath.row] else { return }
         viewModel.indexPath = indexPath
-        let vc = DetailViewController(viewModel: hasPlace)
-        navigationController?.modalPresentationStyle = .custom
-        navigationController?.pushViewController(vc, animated: true)
+        coordinator?.goDetails(place: hasPlace)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

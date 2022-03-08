@@ -25,6 +25,8 @@
 		755F01E527D40CAC00471966 /* DestinationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F01E427D40CAC00471966 /* DestinationDataSource.swift */; };
 		755F01EB27D4161300471966 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F01EA27D4161300471966 /* PlaceTableViewCell.swift */; };
 		755F01EE27D41DC200471966 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F01ED27D41DC200471966 /* Date+Extensions.swift */; };
+		75FBB67827D758E8005FE486 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FBB67727D758E8005FE486 /* CoordinatorProtocol.swift */; };
+		75FBB67A27D75907005FE486 /* DestinationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FBB67927D75907005FE486 /* DestinationsCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		755F01E427D40CAC00471966 /* DestinationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDataSource.swift; sourceTree = "<group>"; };
 		755F01EA27D4161300471966 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		755F01ED27D41DC200471966 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		75FBB67727D758E8005FE486 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		75FBB67927D75907005FE486 /* DestinationsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 		755F01A127D3FAA900471966 /* DestinationList */ = {
 			isa = PBXGroup;
 			children = (
+				75FBB67627D758D4005FE486 /* Coordinator */,
 				755F01EC27D41DB400471966 /* Extesions */,
 				755F01E927D4124700471966 /* View */,
 				755F01E127D4050D00471966 /* Protocols */,
@@ -176,6 +181,15 @@
 				755F01ED27D41DC200471966 /* Date+Extensions.swift */,
 			);
 			path = Extesions;
+			sourceTree = "<group>";
+		};
+		75FBB67627D758D4005FE486 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				75FBB67727D758E8005FE486 /* CoordinatorProtocol.swift */,
+				75FBB67927D75907005FE486 /* DestinationsCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75FBB67827D758E8005FE486 /* CoordinatorProtocol.swift in Sources */,
 				752FBDED27D683A500ECEFD9 /* DetailViewController.swift in Sources */,
 				755F01A727D3FAA900471966 /* ViewController.swift in Sources */,
 				752FBDEF27D6852E00ECEFD9 /* PlaceTransitionProtocol.swift in Sources */,
@@ -291,6 +306,7 @@
 				755F01D927D402BE00471966 /* PlaceModel.swift in Sources */,
 				755F01DD27D403B100471966 /* DataFetcher.swift in Sources */,
 				755F01D627D4022B00471966 /* FileLoader.swift in Sources */,
+				75FBB67A27D75907005FE486 /* DestinationsCoordinator.swift in Sources */,
 				755F01E027D404AB00471966 /* DestinationViewModel.swift in Sources */,
 				752FBDF127D687E200ECEFD9 /* Animation.swift in Sources */,
 			);

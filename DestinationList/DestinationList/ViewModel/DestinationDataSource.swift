@@ -26,7 +26,7 @@ class DestinationDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? PlaceTableViewCell else { return UITableViewCell() }
         if let hasData = destinations?[indexPath.row] {
-            cell.configure(data: hasData)
+            cell.configure(item: hasData)
         }
         return cell
     }

@@ -77,8 +77,8 @@ class DetailViewController: UIViewController {
         }
     }()
     
-    init(viewModel: PlaceModel) {
-        self.place = viewModel
+    init(place: PlaceModel) {
+        self.place = place
         super.init(nibName: nil, bundle: nil)
     }
     
